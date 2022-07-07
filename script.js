@@ -13,16 +13,17 @@ const URL = "https://teachablemachine.withgoogle.com/models/9UZx-xuai/"
         maxPredictions = model.getTotalClasses();
 
         // Convenience function to setup a webcam
-        const size = 200;
+        const size = 500;
+      const width = 500;
         const flip = true; // whether to flip the webcam
-        webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
+        webcam = new tmPose.Webcam(width, size, flip); // width, height, flip
         await webcam.setup(); // request access to the webcam
         await webcam.play();
         window.requestAnimationFrame(loop);
 
         // append/get elements to the DOM
         const canvas = document.getElementById("canvas");
-        canvas.width = size; canvas.height = size;
+        canvas.width = width; canvas.height = size;
         ctx = canvas.getContext("2d");
         labelContainer = document.getElementById("label-container");
         for (let i = 0; i < maxPredictions; i++) { // and class labels
